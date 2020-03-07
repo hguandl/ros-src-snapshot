@@ -5,17 +5,11 @@ osx_image: xcode11.3
 env: ROS_DISTRO=melodic \
      ROS_CONFIGURATION=desktop_full
 
-before_install:
-  - brew update
-  - brew install python
-
-install: pip3 install -r requirements.txt
+install:
+  - ./venv.sh
 
 script:
-  - sudo rosdep init
-  - rosdep update
-  - rosinstall_generator ${ROS_CONFIGURATION} --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
-  - wstool init -j2 src ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
+  - ./retrieve.sh
 
 before_cache:
   - brew cleanup
@@ -23,12 +17,12 @@ before_cache:
 cache:
   directories:
   - "$HOME/.ros/rosdep"
-  - "/usr/local/Homebrew"
   - "$HOME/Library/Caches/pip"
-  - "$HOME/Library/Caches/Homebrew"
+  - "$TRAVIS_BUILD_DIR/src"
+  - "$TRAVIS_BUILD_DIR/src/rosdep-venv"
 
 before_deploy:
-  - tar cJf src.tar.xz src
+  - ./package.sh
 
 deploy:
   provider: releases
