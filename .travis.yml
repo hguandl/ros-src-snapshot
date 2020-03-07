@@ -11,9 +11,6 @@ install:
 script:
   - ./retrieve.sh
 
-before_cache:
-  - brew cleanup
-
 cache:
   directories:
   - "/etc/ros/rosdep"
