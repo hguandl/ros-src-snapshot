@@ -1,12 +1,16 @@
-language: python
-python: 3.7
+language: shell
 
 os: osx
 osx_image: xcode11.3
 env: ROS_DISTRO=melodic \
      ROS_CONFIGURATION=desktop_full
 
-install: pip3 install --user -r requirements.txt
+before_install:
+  - brew update
+  - brew upgrade
+  - brew install python
+
+install: pip3 install -r requirements.txt
 
 script:
   - sudo rosdep init
@@ -14,10 +18,15 @@ script:
   - rosinstall_generator ${ROS_CONFIGURATION} --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
   - wstool init -j2 src ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
 
+before_cache:
+  - brew cleanup
+
 cache:
   directories:
   - "$HOME/.ros/rosdep"
+  - "/usr/local/Homebrew"
   - "$HOME/Library/Caches/pip"
+  - "$HOME/Library/Caches/Homebrew"
 
 before_deploy:
   - tar cJf src.tar.xz src
