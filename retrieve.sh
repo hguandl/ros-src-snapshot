@@ -3,7 +3,9 @@
 ROS_DISTRO=${ROS_DISTRO:-melodic}
 ROS_CONFIGURATION=${ROS_CONFIGURATION:-desktop_full}
 
-source ./rosdep-venv/bin/activate
+if [ ! $TRAVIS ]; then
+  source ./rosdep-venv/bin/activate
+fi
 
 if [ ! -d /etc/ros/rosdep/ ]; then
   sudo rosdep init

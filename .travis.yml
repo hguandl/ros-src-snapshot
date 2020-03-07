@@ -6,7 +6,7 @@ env: ROS_DISTRO=melodic \
      ROS_CONFIGURATION=desktop_full
 
 install:
-  - ./venv.sh
+  - ./bootstrap.sh
 
 script:
   - ./retrieve.sh
@@ -16,6 +16,7 @@ before_cache:
 
 cache:
   directories:
+  - "/etc/ros/rosdep"
   - "$HOME/.ros/rosdep"
   - "$HOME/Library/Caches/pip"
   - "$TRAVIS_BUILD_DIR/src"
