@@ -20,7 +20,6 @@ cache:
   - "$HOME/.ros/rosdep"
   - "$HOME/Library/Caches/pip"
   - "$TRAVIS_BUILD_DIR/src"
-  - "$TRAVIS_BUILD_DIR/src/rosdep-venv"
 
 before_deploy:
   - ./package.sh

@@ -17,7 +17,7 @@ rosdep update
 
 rosinstall_generator ${ROS_CONFIGURATION} --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
 
-if [ -d src ]; then
+if [ -f src/.rosinstall ]; then
   wstool merge -t src ${ROS_DISTRO}-${ROS_CONFIGURATION}.rosinstall
   wstool update -t src
 else
