@@ -20,12 +20,15 @@ cache:
 
 before_deploy:
   - ./package.sh
+  - shasum -a 256 src.tar.xz > src.tar.xz.sha256
 
 deploy:
   provider: releases
   token: $GITHUB_TOKEN
   file: src.tar.xz
-  skip_cleanup: true
+  cleanup: false
   on:
     repo: hguandl/ros-src-snapshot
     tags: true
+  release_notes_file: src.tar.xz.sha256
+  edge: true
