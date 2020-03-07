@@ -1,0 +1,14 @@
+argparse
+catkin-pkg
+empy
+matplotlib
+mock
+Pillow
+psutil
+PyOpenGL
+PyYAML
+rosdep
+rosinstall
+rosinstall-generator
+rospkg
+wxPython

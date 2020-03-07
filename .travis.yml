@@ -25,7 +25,9 @@ before_deploy:
 deploy:
   provider: releases
   token: $GITHUB_TOKEN
-  file: src.tar.xz
+  file:
+    - src.tar.xz
+    - requirements.txt
   cleanup: false
   on:
     repo: hguandl/ros-src-snapshot
