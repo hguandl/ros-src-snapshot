@@ -7,7 +7,6 @@ env: ROS_DISTRO=melodic \
 
 before_install:
   - brew update
-  - brew upgrade
   - brew install python
 
 install: pip3 install -r requirements.txt
