@@ -4,3 +4,4 @@ rosdep-venv/**
 src/**
 src.tar.xz
 ros-build*
+ros-snapshot*

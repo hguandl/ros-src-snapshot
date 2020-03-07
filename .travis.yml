@@ -20,15 +20,18 @@ cache:
 
 before_deploy:
   - ./package.sh
-  - shasum -a 256 ros-${TRAVIS_TAG}.tar.xz > ros-${TRAVIS_TAG}.tar.xz.sha256
+  - shasum -a 256 ros-${TRAVIS_TAG}.tar.xz > ${TRAVIS_TAG}-release.sha256
+  - shasum -a 256 ros-${TRAVIS_TAG}_pylib.tar.xz >> ${TRAVIS_TAG}-release.sha256
 
 deploy:
   provider: releases
   token: $GITHUB_TOKEN
-  file: ros-${TRAVIS_TAG}.tar.xz
+  file:
+    - ros-${TRAVIS_TAG}.tar.xz
+    - ros-${TRAVIS_TAG}_pylib.tar.xz
   cleanup: false
   on:
     repo: hguandl/ros-src-snapshot
     tags: true
-  release_notes_file: ros-${TRAVIS_TAG}.tar.xz.sha256
+  release_notes_file: ${TRAVIS_TAG}-release.sha256
   edge: true
