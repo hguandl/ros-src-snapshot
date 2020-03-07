@@ -1,0 +1,5 @@
+.DS_Store
+rosdep-venv/**
+*.rosinstall
+src/**
+src.tar.xz
