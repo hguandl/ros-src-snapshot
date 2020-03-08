@@ -1,16 +1,3 @@
-argparse
-catkin-pkg
-defusedxml
-empy
-matplotlib
-mock
-netifaces
-Pillow
-psutil
-PyOpenGL
-PyYAML
 rosdep
 rosinstall
-rosinstall-generator
-rospkg
-wxPython
+rosinstall_generator

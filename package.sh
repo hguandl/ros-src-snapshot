@@ -15,3 +15,5 @@ if [ -d src ]; then
   tar -cJf ${DEPLOY_NAME}.tar.xz ${DEPLOY_NAME}
   rm -rf ${DEPLOY_NAME}
 fi
+
+cp build-requirements.txt requirements-${TRAVIS_TAG}.txt
