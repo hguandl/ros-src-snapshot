@@ -4,6 +4,7 @@ defusedxml
 empy
 matplotlib
 mock
+nose
 netifaces
 Pillow
 psutil
