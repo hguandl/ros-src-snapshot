@@ -15,11 +15,3 @@ if [ -d src ]; then
   tar -cJf ${DEPLOY_NAME}.tar.xz ${DEPLOY_NAME}
   rm -rf ${DEPLOY_NAME}
 fi
-
-if [ -f build-requirements.txt ]; then
-  mkdir ${DEPLOY_NAME}_pylib
-  pip3 install -r build-requirements.txt --target=${DEPLOY_NAME}_pylib/lib/python3.7
-  mv ${DEPLOY_NAME}_pylib/lib/python3.7/bin ${DEPLOY_NAME}_pylib
-  tar -cJf ${DEPLOY_NAME}_pylib.tar.xz ${DEPLOY_NAME}_pylib
-  rm -rf ${DEPLOY_NAME}_pylib
-fi

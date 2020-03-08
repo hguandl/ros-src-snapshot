@@ -9,7 +9,7 @@ init_venv() {
 
   virtualenv rosdep-venv
   source ./rosdep-venv/bin/activate
-  pip3 install -r requirements.txt
+  pip3 install -r setup-requirements.txt
 }
 
 venv() {
@@ -19,7 +19,7 @@ venv() {
 }
 
 sysenv() {
-  pip3 install -r requirements.txt
+  pip3 install -r setup-requirements.txt
 }
 
 if [ $TRAVIS ]; then
